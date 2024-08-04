@@ -41,10 +41,10 @@ class PERS_JOGAVEL:
             tela.blit(Manoel_ladoD, (self.x - 70, self.y - 70))
 
     def barravida(self):
-        largura_total = 510
-        largura_atual = self.vida * 5
-        pygame.draw.rect(tela, (0, 0, 0), (((tela_x / 2 - 10) - largura_total / 2 + 20), 10, largura_total, 26))
-        pygame.draw.rect(tela, (255, 0, 0), (((tela_x / 2 - 5) - largura_total / 2 + 20), 16, largura_atual, 14))
+        largura_total = 97
+        largura_atual = self.vida/1.3
+        pygame.draw.rect(tela, (0, 0, 0), (self.x - largura_total/2, self.y-90, largura_total, 13))
+        pygame.draw.rect(tela, (255, 0, 0), ((self.x - largura_total/2+11), self.y- 86, largura_atual, 5))
 
     def bordas(self):
         if self.y < self.size + 2:
