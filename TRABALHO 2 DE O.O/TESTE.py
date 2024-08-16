@@ -264,7 +264,7 @@ class Score:
         self.cor = cor
         self.pontos = int(pontos)
 
-        self.fonte = pygame.font.Font('FONTES\Evil_Highway.ttf', 35)
+        self.fonte = pygame.font.Font('FONTES/Evil_Highway.ttf', 35)
 
         self.update_texto()
 
