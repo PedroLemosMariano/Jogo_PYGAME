@@ -240,14 +240,20 @@ class Jogo:
             self.clock.tick(60)
 
 
+def raise_memory_error():
+    raise MemoryError
+
 if __name__ == "__main__":
     try:
-        #large_list = [0] * (10**8)
         jogo = Jogo()
         #jogo.rodar = raise_memory_error
         jogo.rodar()
     except MemoryError:
         print("Erro de Memória: Não há memória suficiente no dispositivo para executar este jogo.")
+        pygame.quit()
+        sys.exit()
+    except FileNotFoundError:
+        print("Erro: Arquivo não encontrado. Certifique-se de que o arquivo exista.")
         pygame.quit()
         sys.exit()
     finally:
