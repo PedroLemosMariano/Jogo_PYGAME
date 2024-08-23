@@ -36,7 +36,7 @@ class Jogo:
         self.__last_threshold = 0
         self.__decrement = 0
         self.__fonte_nome = pygame.font.Font(None, 74) 
-        self.__player_name = "PEDRO"
+        self.__player_name = "JOGADOR1"
         self.__personagem1 = PERS_JOGAVEL(tela_x / 2, tela_y / 2, 25, 5, (0, 255, 0))
         self.__pontuação = Score(110,54,55,(200,200,200),0)
         self.__telafinal = Gameover(0,0,20,20)
@@ -342,6 +342,32 @@ class Jogo:
             self._spawn_time -= self._decrement
             self._last_threshold = self._current_threshold
 
+    def nome_jogador(self):
+        pygame.display.set_caption("Input de Nome")
+        fonte = pygame.font.Font('FONTES/BLOODY.ttf', 65)
+        self._player_name = "NOME DO JOGADOR: "
+        executando = True
+
+        while executando:
+            for evento in pygame.event.get():
+                if evento.type == pygame.QUIT:
+                    executando = False
+                if evento.type == pygame.KEYDOWN:
+                    if evento.key == pygame.K_RETURN:
+                        print(f"Nome digitado: {self._player_name}")
+                        executando = False
+                    elif evento.key == pygame.K_ESCAPE:
+                        pygame.quit()  
+                    elif evento.key == pygame.K_BACKSPACE:
+                        self._player_name = self._player_name[:-1]
+                    else:
+                        self._player_name += evento.unicode
+
+            tela.blit(tela_nome, (-100, -70))
+            texto_surface = fonte.render(self._player_name, True, (200, 0, 0))
+            tela.blit(texto_surface, (tela_x /4 - 50 , tela_y / 2 - 170))
+            pygame.display.flip()
+
     def rodar(self):
         while True:
             for event in pygame.event.get():
@@ -477,8 +503,10 @@ def raise_memory_error():
 if __name__ == "__main__":
     try:
         jogo = Jogo()
+        jogo.nome_jogador()
+        if jogo.nome_jogador != "JOGADOR1":
         #jogo.rodar = raise_memory_error
-        jogo.rodar()
+            jogo.rodar()
     except MemoryError:
         print("Erro de Memória: Não há memória suficiente no dispositivo para executar este jogo.")
         pygame.quit()
