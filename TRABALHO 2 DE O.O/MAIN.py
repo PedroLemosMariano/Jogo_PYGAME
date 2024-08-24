@@ -345,7 +345,8 @@ class Jogo:
     def nome_jogador(self):
         pygame.display.set_caption("Input de Nome")
         fonte = pygame.font.Font('FONTES/BLOODY.ttf', 65)
-        self._player_name = "NOME DO JOGADOR: "
+        prompt = "NOME DO JOGADOR: "
+        self._player_name = ""
         executando = True
 
         while executando:
@@ -364,7 +365,7 @@ class Jogo:
                         self._player_name += evento.unicode
 
             tela.blit(tela_nome, (-100, -70))
-            texto_surface = fonte.render(self._player_name, True, (200, 0, 0))
+            texto_surface = fonte.render(prompt + self._player_name, True, (200, 0, 0))
             tela.blit(texto_surface, (tela_x /4 - 50 , tela_y / 2 - 170))
             pygame.display.flip()
 
